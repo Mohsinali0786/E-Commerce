@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Grid from 'antd/lib/card/Grid';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -102,22 +103,29 @@ export default function PrimarySearchAppBar() {
                 <Link to='/Kids' className='mlinkstyling'>Kids</Link>
             </MenuItem>
             <Divider />
+            <div style={{ display: 'flex' }}>
+                <MenuItem onClick={handleMobileMenuClose}>
+                    <IconButton
+                        size="large"
+                        aria-label="show 17 new notifications"
+                        color="inherit"
+                    >
+                        <Model />
 
-            <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-            >
-                <Model />
 
-            </IconButton>
-            <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-            >
-                <AttachMoneyRoundedIcon />
-            </IconButton>
+                    </IconButton>
+                </MenuItem>
+                <MenuItem>
+                    <IconButton
+                        size="large"
+                        aria-label="show 17 new notifications"
+                        color="inherit"
+                    >
+                        <AttachMoneyRoundedIcon />
+                    </IconButton>
+                </MenuItem>
+            </div>
+
 
         </Menu >
     );
