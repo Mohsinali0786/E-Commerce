@@ -1,34 +1,25 @@
 import * as React from 'react';
-import Grid from 'antd/lib/card/Grid';
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-// import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
-// import MoreIcon from '@mui/icons-material/MoreVert';
 import BoyRoundedIcon from '@mui/icons-material/BoyRounded';
 import GirlRoundedIcon from '@mui/icons-material/GirlRounded';
-// import { Grid } from '@mui/material';
 import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
-
 import Divider from '@mui/material/Divider';
-
-// import LocalGroceryStoreOutlinedIcon from '@mui/icons-material/LocalGroceryStoreOutlined';
 import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 import Model from './model'
-
+import Form from '../Container/form'
+import { useNavigate } from 'react-router-dom';
 export default function PrimarySearchAppBar() {
-    // const [anchorEl, setAnchorEl] = React.useState(null);
+    const Navigate = useNavigate();
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-    // const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     console.log("isMobileMenuOpen===>", isMobileMenuOpen)
 
@@ -68,42 +59,49 @@ export default function PrimarySearchAppBar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge color="error">
+            <Link to='/' className='mlinkstyling'>
+                <MenuItem>
+                    <Badge className='Mob-navbaricons' color="error">
                         <GirlRoundedIcon fontSize='large' />
                     </Badge>
-                </IconButton>
-
-                <Link to='/' className='mlinkstyling'>Women</Link>
-            </MenuItem>
-            <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show 17 new notifications"
-                    color="inherit"
-                >
                     <Badge color="error">
+                        Home
+                    </Badge>
+                </MenuItem>
+            </Link>
+
+            <Link to='/women' className='mlinkstyling'>
+                <MenuItem>
+                    <Badge className='Mob-navbaricons' color="error">
+                        <GirlRoundedIcon fontSize='large' />
+                    </Badge>
+                    <Badge color="error">
+                        Women
+                    </Badge>
+                </MenuItem>
+            </Link>
+            <Link to='/men' className='mlinkstyling'>
+                <MenuItem>
+                    <Badge className='Mob-navbaricons' color="error">
                         <BoyRoundedIcon fontSize='large' />
                     </Badge>
-                </IconButton>
-
-                <Link to='/Men' className='mlinkstyling'>Men</Link>
-            </MenuItem>
-            <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show 17 new notifications"
-                    color="inherit"
-                >
                     <Badge color="error">
+                        Men
+                    </Badge>
+                </MenuItem>
+            </Link>
+            <Link to='/kids' className='mlinkstyling'>
+                <MenuItem>
+                    <Badge className='Mob-navbaricons' color="error">
                         <FamilyRestroomIcon fontSize='large' />
                     </Badge>
-                </IconButton>
-                <Link to='/Kids' className='mlinkstyling'>Kids</Link>
-            </MenuItem>
+                    <Badge color="error">
+                        Kids
+                    </Badge>
+                </MenuItem>
+            </Link>
             <Divider />
-            <div style={{ display: 'flex' }}>
+            {/* <div style={{ display: 'flex' }}>
                 <MenuItem onClick={handleMobileMenuClose}>
                     <IconButton
                         size="large"
@@ -124,7 +122,7 @@ export default function PrimarySearchAppBar() {
                         <AttachMoneyRoundedIcon />
                     </IconButton>
                 </MenuItem>
-            </div>
+            </div> */}
 
 
         </Menu >
@@ -132,7 +130,7 @@ export default function PrimarySearchAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" >
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -154,13 +152,21 @@ export default function PrimarySearchAppBar() {
                             </IconButton>
                         </Box>
                     </IconButton>
+
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton
                             size="large"
                             aria-label="show 4 new mails"
                             color="inherit"
                         >
-                            <Link to='/' className='linkstyling'>Women</Link>
+                            <Link to='/' className='linkstyling'>Home</Link>
+                        </IconButton>
+                        <IconButton
+                            size="large"
+                            aria-label="show 4 new mails"
+                            color="inherit"
+                        >
+                            <Link to='/women' className='linkstyling'>Women</Link>
                         </IconButton>
 
                         <IconButton
@@ -168,7 +174,7 @@ export default function PrimarySearchAppBar() {
                             aria-label="show 17 new notifications"
                             color="inherit"
                         >
-                            <Link to='/Men' className='linkstyling'>Men</Link>
+                            <Link to='/men' className='linkstyling'>Men</Link>
 
                         </IconButton>
                         <IconButton
@@ -176,21 +182,21 @@ export default function PrimarySearchAppBar() {
                             aria-label="show 17 new notifications"
                             color="inherit"
                         >
-                            <Link to='/Kids' className='linkstyling'>Kids</Link>
+                            <Link to='/kids' className='linkstyling'>Kids</Link>
 
                         </IconButton>
                     </Box>
 
 
                     <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{ display: { md: 'flex' } }}>
 
                         <IconButton
                             size="large"
                             aria-label="show 17 new notifications"
                             color="inherit"
                         >
-                            <Model />
+                            <Model style={{ backgeoundColor: '#00E2E6' }} />
 
                             {/* <LocalGroceryStoreOutlinedIcon /> */}
 
@@ -199,8 +205,10 @@ export default function PrimarySearchAppBar() {
                             size="large"
                             aria-label="show 17 new notifications"
                             color="inherit"
+                            onClick={() => Navigate('/form')}
                         >
                             <AttachMoneyRoundedIcon />
+                            {/* <Form /> */}
 
                         </IconButton>
                     </Box>
@@ -208,6 +216,6 @@ export default function PrimarySearchAppBar() {
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}
-        </Box>
+        </Box >
     );
 }

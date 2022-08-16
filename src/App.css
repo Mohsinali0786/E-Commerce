@@ -4,20 +4,102 @@
 }
 
 body {
-  background-color: lightcoral !important;
+  /* background-color: #00E2E6 !important; */
   overflow: visible !important;
 }
 
 
+/* HomePage CSS */
+
+.Home-Section {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.Home-Section .Homepage-heading {
+  font-size: 30px;
+
+}
+
+.H-left-section>h4 {
+  font-size: 70%px;
+  color: gray;
+}
+
+.MuiButtonBase-root {
+  border-radius: 20px !important;
+}
+
+.Mob-navbaricons {
+  margin-right: 10px;
+}
+
+.homeimage {
+  /* margin: 70px; */
+  /* transform: scale(1); */
+}
+
+.Home-Section {
+  display: grid;
+  grid-template-columns: 30% 65%;
+}
+
+@media only screen and (max-width: 1300px) {
+  .homeimage {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .Home-Section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.Home-Section2 {
+
+  background-color: rgb(240, 240, 240);
+  font-size: 30px;
+  font-family: serif;
+  margin-top: 50px;
+}
+
+.Home-Section2a {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+}
+
+.services {
+  text-align: center;
+  /* height: 300px; */
+  margin-top: 15%;
+}
+
+.home-logoimg {
+  transform: scale(3);
+}
+
+
+.services>h4 {
+  font-size: 20px;
+  margin: 20px 50px;
+  /* font-size: ; */
+}
 
 .maincont {
-  padding-bottom: 300px;
+  padding-bottom: 50px;
 
 }
 
 .pageheading {
   margin-top: 40px;
-  font-family: myfont;
+  font-family: serif;
   font-size: 40px;
 
 
@@ -28,8 +110,9 @@ body {
 
 .Card-main-cont {
   Width: 300px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   margin-bottom: 20px;
+
 }
 
 .cardstyling {
@@ -61,14 +144,15 @@ body {
 }
 
 .MuiToolbar-root {
-  background-color: white;
+  background-color: rgb(240, 240, 240);
+  height: 20px;
   color: black;
 
 }
 
 .p-img {
-  width: 350px;
-  height: 350px;
+  width: 100%;
+  height: 320px;
 }
 
 /* .MuiGrid-root {
@@ -123,10 +207,48 @@ body {
 }
 
 .del-btn {
-  width: 100%;
+  /* width: 100%; */
+
+  margin-top: 20px !important;
+}
+
+@media only screen and (max-width: 450px) {
+  .update-quantity {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .update-quantity:nth-child(2) {
+    text-align: left;
+
+  }
 }
 
 /* Mybag Css */
+.emptycart-text {
+  font-size: 30px !important;
+  text-align: center;
+}
+
+.ant-modal-body {
+
+  /* background-color: #00E2E6; */
+}
+
+.Bag-maindiv {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 300px;
+  width: 100%;
+  padding: 20px;
+  margin-left: 22px;
+  padding-top: 30px;
+}
+
+.webBag-maindiv {
+  margin: 0px 10%
+}
 
 .Bag-maindiv>h1 {
   text-align: center;
@@ -148,6 +270,7 @@ body {
 .lists2 {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 
 }
 
@@ -155,4 +278,20 @@ body {
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+
+/* # Form CSS */
+
+.ant-form {
+  margin: 20% !important;
+}
+
+.form-h2 {
+
+  font-size: 30px;
+  margin: 10%;
+  text-align: left;
 }

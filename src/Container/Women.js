@@ -4,9 +4,31 @@ import { Container } from '@mui/system';
 import { Grid, Button } from '@mui/material';
 import Data from '../Components/data'
 import { useCart } from 'react-use-cart';
+import Swal from 'sweetalert2';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Women() {
     const { addItem } = useCart();
+    const Navigate = useNavigate()
+
+    const [login, islogin] = useState(false)
+    const alert = (item) => {
+        if (login) {
+            addItem(item)
+            Swal.fire(
+                'Succeed!',
+                'You Item has been added to cart sucessfuly!',
+                'success'
+            )
+
+        }
+        else {
+            Navigate('/form')
+        }
+
+
+    }
 
     return (
         <Container className='maincont'>
@@ -21,7 +43,7 @@ function Women() {
                         return (
                             <Grid key={index} className='productcard'>
                                 <MediaCard img={items.img} itemName={items.Name} price={items.price} />
-                                <Button variant='contained' color='success' onClick={() => addItem(items)}>Add To Cart</Button>
+                                <Button variant='contained' color='success' onClick={() => alert(items)}>Add To Cart</Button>
                             </Grid>
 
                         )
