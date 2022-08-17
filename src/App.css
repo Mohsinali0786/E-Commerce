@@ -283,15 +283,51 @@ body {
 
 
 
-/* # Form CSS */
+/* # Forms CSS */
 
 .ant-form {
-  margin: 20% !important;
+  margin: 10% !important;
 }
 
 .form-h2 {
 
   font-size: 30px;
+  margin-top: 10%;
+  text-align: center;
+}
+
+.form-h4 {
+
+
+  text-align: center;
+}
+
+.regform {
+  text-align: right;
+}
+
+.signin-formcontainer {
+  border-radius: 20px;
   margin: 10%;
-  text-align: left;
+  width: 70%;
+  border: 1px solid black;
+  text-align: center;
+  background-image: linear-gradient(to top right, rgb(122, 101, 172), rgb(0, 255, 145));
+
+
+}
+
+.Loginoutbtns {
+  border-radius: 10px !important;
+  color: white !important;
+  margin-top: 20px;
+  padding: 5px 10px !important;
+  width: 150px !important;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4) !important;
+  background: linear-gradient(180deg, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 50%, rgba(200, 0, 0, 1) 50.1%, rgba(200, 0, 0, 1) 100%) !important;
+  cursor: pointer !important;
+}
+
+.stylinginput {
+  color: white !important;
 }

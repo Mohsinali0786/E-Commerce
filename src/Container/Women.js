@@ -5,28 +5,71 @@ import { Grid, Button } from '@mui/material';
 import Data from '../Components/data'
 import { useCart } from 'react-use-cart';
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Women() {
     const { addItem } = useCart();
     const Navigate = useNavigate()
 
-    const [login, islogin] = useState(false)
-    const alert = (item) => {
-        if (login) {
-            addItem(item)
-            Swal.fire(
-                'Succeed!',
-                'You Item has been added to cart sucessfuly!',
-                'success'
-            )
+    const myalert1 = () => {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: true
+        })
 
+        swalWithBootstrapButtons.fire({
+            title: 'Please Login First?',
+            text: "You won't be able to add your product now!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Login!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                Navigate('/form')
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        })
+    }
+    const AddItemsInCart = (item) => {
+        if (localStorage.getItem("id") === null) {
+            myalert1()
+            // Navigate('/form')
         }
         else {
-            Navigate('/form')
-        }
+            var data = JSON.parse(localStorage.getItem('id'))
+            if (data.IsLogin) {
+                addItem(item)
+                Swal.fire(
+                    'Succeed!',
+                    'You Item has been added to cart sucessfuly!',
+                    'success'
+                )
 
+            }
+            else {
+                Swal.fire(
+                    'Please LogIn!',
+                    'To Add Item in Cart you should Login first!',
+                    'warning'
+                )
+                Navigate('/form')
+            }
+        }
 
     }
 
@@ -43,7 +86,7 @@ function Women() {
                         return (
                             <Grid key={index} className='productcard'>
                                 <MediaCard img={items.img} itemName={items.Name} price={items.price} />
-                                <Button variant='contained' color='success' onClick={() => alert(items)}>Add To Cart</Button>
+                                <Button variant='contained' color='success' onClick={() => AddItemsInCart(items)}>Add To Cart</Button>
                             </Grid>
 
                         )

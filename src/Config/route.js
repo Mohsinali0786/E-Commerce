@@ -6,7 +6,8 @@ import Kids from '../Container/Kids'
 // import Mybag from '../Components/bag'
 import WebMybag from '../Components/webbag'
 import { CartProvider } from 'react-use-cart'
-import Form from '../Container/form'
+import MyForm from '../Container/form'
+import SignUp from '../Container/signup'
 
 var Allpaths = [
 
@@ -15,7 +16,8 @@ var Allpaths = [
     { path: '/men', Component: Men },
     { path: '/kids', Component: Kids },
     { path: '/webbag', Component: WebMybag },
-    { path: '/form', Component: Form },
+    { path: '/form', Component: MyForm },
+    { path: '/signup', Component: SignUp }
 
 ]
 

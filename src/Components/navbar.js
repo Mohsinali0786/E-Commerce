@@ -7,6 +7,7 @@ import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import BoyRoundedIcon from '@mui/icons-material/BoyRounded';
 import GirlRoundedIcon from '@mui/icons-material/GirlRounded';
@@ -14,33 +15,36 @@ import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import Divider from '@mui/material/Divider';
 import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 import Model from './model'
-import Form from '../Container/form'
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 export default function PrimarySearchAppBar() {
     const Navigate = useNavigate();
+
+    var data = JSON.parse(localStorage.getItem('id'))
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     console.log("isMobileMenuOpen===>", isMobileMenuOpen)
 
-    // const handleProfileMenuOpen = (event) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
     };
 
-    // const handleMenuClose = () => {
-    //     setAnchorEl(null);
-    //     handleMobileMenuClose();
-    // };
 
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
-
-    // const menuId = 'primary-search-account-menu';
+    const setloginfalse = () => {
+        localStorage.setItem('id', JSON.stringify({ Username: data.Username, Email: data.Email, Password: data.Password, IsLogin: false }))
+        Navigate('/form')
+      
+        Swal.fire(
+            'LogOut Successfully!',
+            'Now To add product again Login!',
+            'success'
+        )
+    }
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
@@ -101,28 +105,6 @@ export default function PrimarySearchAppBar() {
                 </MenuItem>
             </Link>
             <Divider />
-            {/* <div style={{ display: 'flex' }}>
-                <MenuItem onClick={handleMobileMenuClose}>
-                    <IconButton
-                        size="large"
-                        aria-label="show 17 new notifications"
-                        color="inherit"
-                    >
-                        <Model />
-
-
-                    </IconButton>
-                </MenuItem>
-                <MenuItem>
-                    <IconButton
-                        size="large"
-                        aria-label="show 17 new notifications"
-                        color="inherit"
-                    >
-                        <AttachMoneyRoundedIcon />
-                    </IconButton>
-                </MenuItem>
-            </div> */}
 
 
         </Menu >
@@ -197,20 +179,23 @@ export default function PrimarySearchAppBar() {
                             color="inherit"
                         >
                             <Model style={{ backgeoundColor: '#00E2E6' }} />
-
-                            {/* <LocalGroceryStoreOutlinedIcon /> */}
-
                         </IconButton>
-                        <IconButton
+
+                        {/* {
+                            data.IsLogin ? */}
+
+                        < IconButton
                             size="large"
                             aria-label="show 17 new notifications"
                             color="inherit"
-                            onClick={() => Navigate('/form')}
+                            onClick={() => { setloginfalse() }}
                         >
                             <AttachMoneyRoundedIcon />
-                            {/* <Form /> */}
-
                         </IconButton>
+                        {/* :
+                                <></>
+
+                        } */}
                     </Box>
 
                 </Toolbar>
