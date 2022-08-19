@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import img1 from '../Assets/Images/loginimage.png'
 
 
 const MyForm = () => {
@@ -98,86 +99,83 @@ const MyForm = () => {
     return (
         <div className='signin-formcontainer'>
 
-            <h2 className='form-h2'>Login Form </h2>
+            <div className='form-section' >
 
-            <h4 className='form-h4'>Before Add Item in cart you should first login</h4>
-            <Form className='signin-formstyling'
-                name="basic"
-                labelCol={{
-                    span: 8,
-                }}
-                wrapperCol={{
-                    span: 16,
-                }}
-                initialValues={{
-                    remember: true,
-                }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete="off"
-            >
-                <Form.Item
-                    label="Email"
-                    name="Email"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your username!',
-                        },
-                    ]}
-                >
-                    <Input className='stylinginput' onChange={(e) => LoginEmail(e)} />
-                </Form.Item>
-
-                <Form.Item
-                    label="Password"
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                    ]}
-                >
-                    <Input.Password className='stylinginput' onChange={(e) => { LoginPassword(e) }} />
-                </Form.Item>
-
-                <Form.Item
-                    name="remember"
-                    valuePropName="checked"
+                <Form className='signin-formstyling'
+                    name="basic"
+                    labelCol={{
+                        span: 8,
+                    }}
                     wrapperCol={{
-                        offset: 8,
                         span: 16,
                     }}
-                >
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
-                <Form.Item
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
+                    initialValues={{
+                        remember: true,
                     }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    autoComplete="off"
                 >
-                    <div style={{
-                        display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', textAlign: 'left'
-                    }}>
-                        < Button className='Loginoutbtns' htmlType="submit" onClick={() => { Getdatafromlocalstorage() }}>
-                            LoginIn
-                        </Button>
-                        <Button className='Loginoutbtns' type='link' onClick={() => Navigate('/signup')}>Register Account </Button>
+                    <h2 className='form-h2'>Login Form </h2>
 
+                    <h4 className='form-h4'>Before Add Item in cart you should first login</h4>
+                    <Form.Item
+                        label="Email"
+                        name="Email"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <Input className='stylinginput' onChange={(e) => LoginEmail(e)} />
+                    </Form.Item>
 
+                    <Form.Item
+                        label="Password"
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                        ]}
+                    >
+                        <Input.Password className='stylinginput' onChange={(e) => { LoginPassword(e) }} />
+                    </Form.Item>
 
+                    <Form.Item
+                        name="remember"
+                        valuePropName="checked"
+                        wrapperCol={{
+                            offset: 8,
+                            span: 16,
+                        }}
+                    >
+                        <Checkbox>Remember me</Checkbox>
+                    </Form.Item>
 
-                        <div className='regform'>
+                    <Form.Item
+                        wrapperCol={{
+                            // offset: 8,
+                            // span: 16,
+                        }}
+                    >
+                        <div style={{
+                            display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', flexWrap: 'wrap', textAlign: 'left', marginLeft: '10px'
+                        }}>
+                            < Button className='Loginoutbtns' htmlType="submit" onClick={() => { Getdatafromlocalstorage() }}>
+                                LoginIn
+                            </Button>
+                            <Button className='Loginoutbtns' type='link' onClick={() => Navigate('/signup')}>Register Account </Button>
+
                             <Button className='Loginoutbtns' type='primary' onClick={() => { Navigate('/') }}>Back To Home</Button>
-
-
                         </div>
-                    </div>
-                </Form.Item >
-            </Form >
+                    </Form.Item >
+                </Form >
+                <img src={img1} className='form-image' />
+            </div>
         </div >
     );
 };

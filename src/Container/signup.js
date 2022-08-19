@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import img1 from '../Assets/Images/draw1.png'
 
 const SignUp = () => {
 
@@ -45,95 +46,97 @@ const SignUp = () => {
     return (
         <div className='signin-formcontainer'>
 
-            <h2 className='form-h2'>Create an Account </h2>
-            <Form className='signin-formstyling'
-                name="basic"
-                labelCol={{
-                    span: 8,
-                }}
-                wrapperCol={{
-                    span: 16,
-                }}
-                initialValues={{
-                    remember: true,
-                }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete="off"
-            >
-                <Form.Item
-                    label="Username"
-                    name="Username"
 
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your username!',
-                        },
-                    ]}
-                >
-                    <Input name="Username" value='name' className='stylinginput' onChange={(e) => { data(e) }} />
-                </Form.Item>
-                <Form.Item
-                    label="Email"
-                    name="Email"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your Email!',
-                        },
-                    ]}
-                >
-                    <Input className='stylinginput' name='Email' onChange={(e) => { data(e) }} />
-                </Form.Item>
+            <div className='form-section'>
 
-                <Form.Item
-                    label="Password"
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                    ]}
-                >
-                    <Input.Password className='stylinginput' name='Password' onChange={(e) => { data(e) }} />
-                </Form.Item>
-                <Form.Item
-                    label="Confirm Password"
-                    name="Confirm Password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                    ]}
-                >
-                    <Input.Password className='stylinginput' name='Confirm Password' onChange={(e) => { data(e) }} />
-                </Form.Item>s
-                <Form.Item
-                    name="remember"
-                    valuePropName="checked"
+                <Form className='signin-formstyling'
+
+                    name="basic"
+                    labelCol={{
+                        span: 8,
+                    }}
                     wrapperCol={{
-                        offset: 8,
                         span: 16,
                     }}
-                >
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
-                <Form.Item
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
+                    initialValues={{
+                        remember: true,
                     }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    autoComplete="off"
                 >
-                    <Button className='Loginoutbtns' type="primary" htmlType="submit" onClick={() => { Submit() }}>
-                        Register
-                    </Button>
 
-                </Form.Item>
-            </Form>
+                    <h2 className='form-h2'>Create an Account </h2>
+                    <Form.Item
+                        label="Username"
+                        name="Username"
+
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <Input name="Username" value='name' className='stylinginput' onChange={(e) => { data(e) }} />
+                    </Form.Item>
+                    <Form.Item
+                        label="Email"
+                        name="Email"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your Email!',
+                            },
+                        ]}
+                    >
+                        <Input className='stylinginput' name='Email' onChange={(e) => { data(e) }} />
+                    </Form.Item>
+
+                    <Form.Item
+                        label="Password"
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                        ]}
+                    >
+                        <Input.Password className='stylinginput' name='Password' onChange={(e) => { data(e) }} />
+                    </Form.Item>
+                    <Form.Item
+                        label="Confirm Password"
+                        name="Confirm Password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                        ]}
+                    >
+                        <Input.Password className='stylinginput' name='Confirm Password' onChange={(e) => { data(e) }} />
+                    </Form.Item>
+                    <Form.Item style={{ display: 'flex', flexDirection: 'row' }}
+                        name="remember"
+                        valuePropName="checked"
+                        wrapperCol={{
+                            offset: 8,
+                            span: 16,
+                        }}
+                    >
+                        <Checkbox>Remember me</Checkbox>
+                    </Form.Item>
+
+                    <Form.Item>
+                        <Button className='Loginoutbtns' type="primary" htmlType="submit" onClick={() => { Submit() }}>
+                            Register
+                        </Button>
+
+                    </Form.Item>
+                </Form>
+                <img className='form-image' src={img1} />
+            </div>
         </div >
     );
 };

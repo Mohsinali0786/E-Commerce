@@ -6,6 +6,7 @@
 body {
   /* background-color: #00E2E6 !important; */
   overflow: visible !important;
+  /* background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201026/pngtree-scene-with-geometrical-forms-the-poster-model-minimal-background-render-image_437743.jpg'); */
 }
 
 
@@ -286,35 +287,39 @@ body {
 /* # Forms CSS */
 
 .ant-form {
-  margin: 10% !important;
+  margin-top: 5% !important;
 }
 
 .form-h2 {
 
   font-size: 30px;
-  margin-top: 10%;
+  /* margin-top: 10%; */
   text-align: center;
+  margin-bottom: 35px;
 }
 
 .form-h4 {
-
-
   text-align: center;
-}
+  margin-bottom: 35px;
 
-.regform {
-  text-align: right;
 }
 
 .signin-formcontainer {
-  border-radius: 20px;
+  /* border-radius: 20px;
   margin: 10%;
-  width: 70%;
-  border: 1px solid black;
-  text-align: center;
-  background-image: linear-gradient(to top right, rgb(122, 101, 172), rgb(0, 255, 145));
+  width: 70%; */
+
+  /* border: 1px solid black; */
+  /* text-align: center; */
+  /* background-image: linear-gradient(to top right, rgb(122, 101, 172), rgb(0, 255, 145)); */
 
 
+}
+
+.form-section {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
 }
 
 .Loginoutbtns {
@@ -329,5 +334,52 @@ body {
 }
 
 .stylinginput {
-  color: white !important;
+  background-color: whitesmoke;
+
+}
+
+.form-image {
+  width: 60%;
+  height: 50%;
+  margin-top: 12%;
+}
+
+@media only screen and (max-width: 780px) {
+  .form-image {
+    width: 50%;
+    height: 70%;
+  }
+
+  .signin-formstyling {
+    text-align: center;
+    width: 50%;
+    margin: 20px
+  }
+
+
+}
+
+@media only screen and (max-width: 620px) {
+  .form-image {
+    display: none;
+    /* width: 50%;
+    height: 70%;
+    margin-top: 30%; */
+  }
+
+  .signin-formstyling {
+    text-align: center;
+    width: 70%;
+    margin: 20px
+  }
+
+  .stylinginput {
+    background-color: whitesmoke !important;
+    border: 2px solid red !important;
+  }
+
+  .Loginoutbtns {
+    width: 80% !important;
+  }
+
 }

@@ -7,7 +7,6 @@ import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import BoyRoundedIcon from '@mui/icons-material/BoyRounded';
 import GirlRoundedIcon from '@mui/icons-material/GirlRounded';
@@ -17,6 +16,7 @@ import AttachMoneyRoundedIcon from '@mui/icons-material/AttachMoneyRounded';
 import Model from './model'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 export default function PrimarySearchAppBar() {
     const Navigate = useNavigate();
 
@@ -35,15 +35,31 @@ export default function PrimarySearchAppBar() {
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
-    const setloginfalse = () => {
-        localStorage.setItem('id', JSON.stringify({ Username: data.Username, Email: data.Email, Password: data.Password, IsLogin: false }))
-        Navigate('/form')
-      
+    function alertforlogout() {
         Swal.fire(
             'LogOut Successfully!',
             'Now To add product again Login!',
             'success'
         )
+
+    }
+    const setloginfalse = () => {
+        localStorage.setItem('id', JSON.stringify({ Username: data.Username, Email: data.Email, Password: data.Password, IsLogin: false }))
+        setlogoutdisabled(false)
+        Navigate('/form')
+        localStorage.clear()
+        alertforlogout()
+
+
+    }
+
+    const [logintbtndisabled, setlogoutdisabled] = useState(false)
+    const logintrue = () => {
+        localStorage.setItem('id', JSON.stringify({ Username: data.Username, Email: data.Email, Password: data.Password, IsLogin: false }))
+
+        setlogoutdisabled(true)
+        alertforlogout()
+        Navigate('/form')
     }
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -181,21 +197,29 @@ export default function PrimarySearchAppBar() {
                             <Model style={{ backgeoundColor: '#00E2E6' }} />
                         </IconButton>
 
-                        {/* {
-                            data.IsLogin ? */}
+                        {
+                            logintbtndisabled ?
+                                < IconButton
+                                    size="large"
+                                    aria-label="show 17 new notifications"
+                                    color="inherit"
+                                    onClick={() => { setloginfalse() }}
+                                >
+                                    <AttachMoneyRoundedIcon />
+                                </IconButton>
+                                :
+                                < IconButton
+                                    size="large"
+                                    aria-label="show 17 new notifications"
+                                    color="inherit"
+                                    onClick={() => logintrue()}
+                                >
+                                    <AttachMoneyRoundedIcon />
+                                </IconButton>
 
-                        < IconButton
-                            size="large"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                            onClick={() => { setloginfalse() }}
-                        >
-                            <AttachMoneyRoundedIcon />
-                        </IconButton>
-                        {/* :
-                                <></>
+                        }
 
-                        } */}
+
                     </Box>
 
                 </Toolbar>

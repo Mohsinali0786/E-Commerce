@@ -5,15 +5,48 @@ import { Grid, Button } from '@mui/material';
 import { useCart } from 'react-use-cart';
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
 import Data from '../Components/data'
 
 function Men() {
-    const { addItem } = useCart();
     const Navigate = useNavigate()
+    const [additems, additemsincart] = useState([])
+    const [id, setid] = useState(0)
+
+    const [getdatafromLS, setgetdaatfromLC] = useState()
+
+    // var all_data = getdatafromLS + additems
+    useEffect(() => {
+        setgetdaatfromLC(JSON.parse(localStorage.getItem('mycart')))
+    }, [])
+    console.log("getdatafromLS", getdatafromLS)
+    useEffect(() => {
+
+        if (additems.length === 0) {
+
+        }
+        else {
+            localStorage.setItem('mycart', JSON.stringify({ isEmpty: false, items: [...additems] }))
+        }
+
+    }, [additems])
+    const AddItemsInCart = (items) => {
+
+        console.log("Add items in cart", additems)
+        var myobject = {
+            img: items.img,
+            itemName: items.Name,
+            price: items.price
+        }
+        additemsincart([...additems, getdatafromLS?.items, myobject])
+        setid(id + 1)
+        // console.log('getdatafromLS', getdatafromLS)
+        // console.log("all_data", (all_data))
+    }
+    console.log("additems", additems)
     const myalert1 = () => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -48,31 +81,31 @@ function Men() {
         })
     }
     // var data = JSON.parse(localStorage.getItem('id'))
-    const AddItemsInCart = (item) => {
-        if (localStorage.getItem("id") === null) {
-            myalert1()
-        }
-        else {
-            var data = JSON.parse(localStorage.getItem('id'))
-            if (data.IsLogin) {
-                addItem(item)
-                Swal.fire(
-                    'Succeed!',
-                    'You Item has been added to cart sucessfuly!',
-                    'success'
-                )
+    // const AddItemsInCart = (item) => {
+    //     if (localStorage.getItem("id") === null) {
+    //         myalert1()
+    //     }
+    //     else {
+    //         var data = JSON.parse(localStorage.getItem('id'))
+    //         if (data.IsLogin) {
+    //             addItem(item)
+    //             Swal.fire(
+    //                 'Succeed!',
+    //                 'You Item has been added to cart sucessfuly!',
+    //                 'success'
+    //             )
 
-            }
-            else {
-                Swal.fire(
-                    'Please LogIn!',
-                    'To Add Item in Cart you should Login first!',
-                    'warning'
-                )
-                Navigate('/form')
-            }
-        }
-    }
+    //         }
+    //         else {
+    //             Swal.fire(
+    //                 'Please LogIn!',
+    //                 'To Add Item in Cart you should Login first!',
+    //                 'warning'
+    //             )
+    //             Navigate('/form')
+    //         }
+    //     }
+    // }
 
     return (
         <Container className='maincont'>
